@@ -1,0 +1,13 @@
+//
+//  Development.xcconfig
+//  AxiomTelecom
+//
+//  Created by Sanu Sathyaseelan on 04/09/2020.
+//  Copyright © 2020 Sanu. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PROTOCOL = http
+HOST = api.jsonbin.io
