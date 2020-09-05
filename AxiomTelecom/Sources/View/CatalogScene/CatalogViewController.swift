@@ -17,9 +17,7 @@ class CatalogViewController: UIViewController {
     
     private var datasource: [Mobile] = [] {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.catalogcollectionView.reloadData()
-            }
+            catalogcollectionView.reloadData()
         }
     }
     
