@@ -61,6 +61,7 @@ private extension CatalogViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = .orange
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -152,5 +153,13 @@ private extension CatalogViewController {
         return datasource.filter {
             $0.brand.lowercased().contains(lowerCaseText) || $0.model?.lowercased().contains(lowerCaseText) == true || $0.price.contains(lowerCaseText)
         }
+    }
+}
+
+public extension UISearchBar {
+    func setTextColor(color: UIColor) {
+        let svs = subviews.flatMap { $0.subviews }
+        guard let tf = (svs.filter { $0 is UITextField }).first as? UITextField else { return }
+        tf.textColor = color
     }
 }
