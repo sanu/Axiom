@@ -77,4 +77,4 @@ public enum SubPath: String {
     case latest =  "latest"
 }
 
-private let secretHeader = ["secret-key": "$2b$10$ldwbG.B/2hNRvS2dzXDxoO5P87sYGwoE02SliZIh.8vlvsSctGqF2"]
+private let secretHeader = ["secret-key": Obfuscator.shared.secretKey]
