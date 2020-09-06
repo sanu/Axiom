@@ -67,21 +67,21 @@ extension ServiceManager: ServiceProtocol {
             
             if let response = response as? HTTPURLResponse {
                 let result = self?.handleNetworkResponse(response)
-                
+                guard let responseData = data else {
+                    completion(.failure(AXError.unknownError))
+                    return
+                }
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(.failure(AXError.unknownError))
-                        return
-                    }
                     do {
                         let model = try JSONDecoder().decode(T.self, from: responseData)
                         completion(.success(model))
                     }catch {
                         completion(.failure(AXError.decodingFailureError))
                     }
-                case .failure(_):
-                    completion(.failure(AXError.unknownError))
+                case .failure( _):
+                    guard let welf = self  else { return }
+                    completion(.failure(welf.wrapError(data: responseData, statusCode: response.statusCode)))
                 default: break
                 }
             }
@@ -89,6 +89,31 @@ extension ServiceManager: ServiceProtocol {
     }
 }
 
+private extension ServiceManager {
+    
+    func wrapError(data: Data?, statusCode: Int) -> AXError {
+        guard let data = data else { return AXError.encodingError }
+        return data.wrapToAXError(statusCode: statusCode)
+    }
+}
 
-
-
+private extension Data {
+    
+    func wrapToAXError(statusCode: Int) -> AXError {
+        
+        if let error = serializeError(ErrorResponse.self, code: statusCode) {
+            return error
+        }
+        
+        return AXError.unknownError
+    }
+    
+    private func serializeError<T: Decodable>(_ : T.Type, code: Int) -> AXError? {
+        guard let errorResponse = try? JSONDecoder().decode(T.self, from: self) else { return nil }
+        
+        if let response = errorResponse as? ErrorResponse {
+            return AXError(code: code, key: "server_error", message: response.message ?? "unknown_error")
+        }
+        return nil
+    }
+}

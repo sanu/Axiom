@@ -12,3 +12,9 @@ enum Result<String> {
     case success
     case failure(String)
 }
+
+
+struct ErrorResponse: Decodable {
+    let message: String?
+    let success: Bool?
+}
