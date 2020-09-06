@@ -39,6 +39,14 @@ extension UIView {
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-\(leading)-[view]-\(trailing)-|", options: [], metrics: nil, views: ["view": self]))
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(top)-[view]-\(bottom)-|", options: [], metrics: nil, views: ["view": self]))
     }
+    
+    func centerAlign() {
+        guard let superview = superview else { return }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+    }
 }
 
 extension UIView {

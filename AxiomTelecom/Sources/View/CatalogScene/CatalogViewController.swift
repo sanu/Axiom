@@ -51,10 +51,15 @@ private extension CatalogViewController {
 //Mark: API calls
 private extension CatalogViewController {
     func loadProducts() {
+        LoadingView.show()
         Mobile.loadCatalogs(onSuccess: { [weak self] products in
+            LoadingView.dismiss()
             self?.refresh(products: products)
         }, onFailure: { error in
-            print("Error \(error.localizedDescription)")
+            LoadingView.dismiss()
+            DispatchQueue.main.async { 
+                UIAlertController.ok(message: error.localizedDescription)
+            }
         })
     }
 }

@@ -59,6 +59,12 @@ extension ServiceManager: ServiceProtocol {
         
         request(request: serviceRequest) { [weak self] (data, response, error) in
             
+            // handle error
+            guard error == nil else {
+                completion(.failure(AXError(key: AXError.keys.commonError, message: error!.localizedDescription)))
+                return
+            }
+            
             if let response = response as? HTTPURLResponse {
                 let result = self?.handleNetworkResponse(response)
                 
@@ -72,7 +78,7 @@ extension ServiceManager: ServiceProtocol {
                         let model = try JSONDecoder().decode(T.self, from: responseData)
                         completion(.success(model))
                     }catch {
-                        completion(.failure(AXError.unknownError))
+                        completion(.failure(AXError.decodingFailureError))
                     }
                 case .failure(_):
                     completion(.failure(AXError.unknownError))

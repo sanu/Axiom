@@ -25,6 +25,10 @@
 		2C383C9325044F9700D9A3EA /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C9225044F9700D9A3EA /* UIImageViewExtensions.swift */; };
 		2C383C962504545C00D9A3EA /* BrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C952504545C00D9A3EA /* BrandView.swift */; };
 		2C383C98250456AE00D9A3EA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C97250456AE00D9A3EA /* ArrayExtensions.swift */; };
+		2C383C9A2504BF9900D9A3EA /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C992504BF9900D9A3EA /* BarButton.swift */; };
+		2C383C9C2504BFE700D9A3EA /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C9B2504BFE700D9A3EA /* UIViewControllerExtensions.swift */; };
+		2C383C9E2504C0B800D9A3EA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C9D2504C0B800D9A3EA /* LoadingView.swift */; };
+		2C383CA02504C6DF00D9A3EA /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C383C9F2504C6DF00D9A3EA /* UIAlertControllerExtensions.swift */; };
 		2C4C962425023E150000C645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C962325023E150000C645 /* AppDelegate.swift */; };
 		2C4C962625023E150000C645 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C962525023E150000C645 /* SceneDelegate.swift */; };
 		2C4C963B25023E170000C645 /* AxiomTelecomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C963A25023E170000C645 /* AxiomTelecomTests.swift */; };
@@ -68,6 +72,10 @@
 		2C383C9225044F9700D9A3EA /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		2C383C952504545C00D9A3EA /* BrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandView.swift; sourceTree = "<group>"; };
 		2C383C97250456AE00D9A3EA /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		2C383C992504BF9900D9A3EA /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
+		2C383C9B2504BFE700D9A3EA /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		2C383C9D2504C0B800D9A3EA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2C383C9F2504C6DF00D9A3EA /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		2C4C962025023E150000C645 /* AxiomTelecom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AxiomTelecom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4C962325023E150000C645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C4C962525023E150000C645 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +153,8 @@
 				2C383C7A2504416800D9A3EA /* AXError.swift */,
 				2C383C7B2504416800D9A3EA /* Utils.swift */,
 				2C383C7C2504416800D9A3EA /* Configuration.swift */,
+				2C383C992504BF9900D9A3EA /* BarButton.swift */,
+				2C383C9D2504C0B800D9A3EA /* LoadingView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -266,6 +276,8 @@
 				2C383C852504427C00D9A3EA /* UIViewExtensions.swift */,
 				2C383C9225044F9700D9A3EA /* UIImageViewExtensions.swift */,
 				2C383C97250456AE00D9A3EA /* ArrayExtensions.swift */,
+				2C383C9B2504BFE700D9A3EA /* UIViewControllerExtensions.swift */,
+				2C383C9F2504C6DF00D9A3EA /* UIAlertControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,10 +407,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C383C84250441FB00D9A3EA /* UICollectionViewExtensions.swift in Sources */,
+				2C383CA02504C6DF00D9A3EA /* UIAlertControllerExtensions.swift in Sources */,
 				2C383C862504427C00D9A3EA /* UIViewExtensions.swift in Sources */,
 				2C4C966E2502CE310000C645 /* ServiceManager.swift in Sources */,
 				2C383C6B25043D5100D9A3EA /* URLRequestExtensions.swift in Sources */,
 				2C383C962504545C00D9A3EA /* BrandView.swift in Sources */,
+				2C383C9E2504C0B800D9A3EA /* LoadingView.swift in Sources */,
 				2C383C6925043D1500D9A3EA /* ServiceWrapperExtensions.swift in Sources */,
 				2C383C98250456AE00D9A3EA /* ArrayExtensions.swift in Sources */,
 				2C383C6725043CD900D9A3EA /* Encoder.swift in Sources */,
@@ -415,6 +429,8 @@
 				2C383C7D2504416800D9A3EA /* AXError.swift in Sources */,
 				2C383C9325044F9700D9A3EA /* UIImageViewExtensions.swift in Sources */,
 				2C383C6D25043DA300D9A3EA /* URLRequestBuilder.swift in Sources */,
+				2C383C9A2504BF9900D9A3EA /* BarButton.swift in Sources */,
+				2C383C9C2504BFE700D9A3EA /* UIViewControllerExtensions.swift in Sources */,
 				2C4C965F2502C74B0000C645 /* ServiceProtocol.swift in Sources */,
 				2C4C962425023E150000C645 /* AppDelegate.swift in Sources */,
 				2C383C8D2504431400D9A3EA /* CatalogCollectionViewCell.swift in Sources */,

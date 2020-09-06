@@ -22,6 +22,12 @@ final class AXError: Error {
 }
 
 extension AXError {
+    var localizedDescription: String {
+        message
+    }
+}
+
+extension AXError {
     static var unknownError: AXError { AXError(key: AXError.keys.unknownError, message: "Something wrong Happened") }
     static var decodingFailureError: AXError {  AXError(key: AXError.keys.jsonParsing, message: "Decoding failed") }
     static var urlError: AXError {  AXError(key: AXError.keys.urlError, message: "Unable to build url") }
@@ -33,5 +39,6 @@ extension AXError {
         static let unknownError = "unknown_error"
         static let jsonParsing = "json_parsing_error"
         static let urlError = "url_error"
+        static let commonError = "common_error"
     }
 }
