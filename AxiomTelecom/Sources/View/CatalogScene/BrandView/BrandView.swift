@@ -18,6 +18,8 @@ class BrandView: UIView {
     private var colorHeaderInActive = UIColor.gray
     private var colorHeaderBackground = UIColor.white
     private var currentPosition = 0
+    
+    var tapActionClosure: GenericClosure<String>?
 
     // injections
     var titles = [String]() {
@@ -76,6 +78,7 @@ private extension BrandView {
 
 extension BrandView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        tapActionClosure?(titles[indexPath.row])
         setCurrentPosition(position: indexPath.row)
     }
 }
@@ -104,6 +107,10 @@ extension BrandView: UICollectionViewDataSource {
 
 extension BrandView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard titles.count > 3 else {
+            return CGSize(width: (collectionView.frame.width - 10) / CGFloat(titles.count), height: collectionView.frame.height)
+        }
+        
         return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.height)
     }
     

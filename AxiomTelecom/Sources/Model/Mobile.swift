@@ -25,12 +25,17 @@ extension Mobile {
 }
 
 extension Mobile {
-    static func loadCatalogs(onSuccess: @escaping GenericClosure<[Mobile]>, onFailure: @escaping GenericClosure<AXError>) {
+    static func loadCatalogs(onSuccess: @escaping GenericClosure<[String: [Mobile]]>, onFailure: @escaping GenericClosure<AXError>) {
         serviceManager.request(wrapper: ServiceWrapper(module: CatalogModule.getLatest)) { (result: AXResult<[MobileAPIResponse]>) in
             switch result {
             case .success(let response):
+                var dict = [String: [Mobile]] ()
                 let mappedObjects = response.map { MobileAPIResponse.map($0) }
-                onSuccess(mappedObjects)
+                let uniqueKeys = mappedObjects.map { $0.brand }
+                uniqueKeys.forEach { key in
+                    dict[key] = mappedObjects.filter { $0.brand == key }
+                }
+                onSuccess(dict)
             case .failure(let error):
                 onFailure(error)
             }

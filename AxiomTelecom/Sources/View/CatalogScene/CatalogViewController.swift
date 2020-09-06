@@ -15,6 +15,8 @@ class CatalogViewController: UIViewController {
     
     private let collectionViewSpacing: CGFloat = 5
     
+    private var fullDataSource: [String: [Mobile]] = [:]
+    
     private var datasource: [Mobile] = [] {
         didSet {
             catalogcollectionView.reloadData()
@@ -38,12 +40,20 @@ private extension CatalogViewController {
         brandheaderView.fill(leading: view.leadingAnchor, trailing: view.trailingAnchor, top: view.safeTop)
         view.addSubview(catalogcollectionView)
         catalogcollectionView.fill(leading: view.leadingAnchor, trailing: view.trailingAnchor, top: brandheaderView.bottomAnchor, bottom: view.safeBottom)
+        
+        brandheaderView.tapActionClosure = { [weak self] item in
+            self?.datasource = self?.fullDataSource[item] ?? []
+        }
     }
     
-    func refresh(products: [Mobile]) {
+    func refresh(products: [String: [Mobile]]) {
+        fullDataSource = products
         DispatchQueue.main.async { [weak self] in
-            self?.datasource = products
-            self?.brandheaderView.titles = Mobile.completeBrands(products: products)
+            let titles = products.compactMap { $0.key }.sorted(by: <)
+            self?.brandheaderView.titles = titles
+            if let title = titles.first, let datasource =  products[title] {
+                self?.datasource = datasource
+            }
         }
     }
 }
