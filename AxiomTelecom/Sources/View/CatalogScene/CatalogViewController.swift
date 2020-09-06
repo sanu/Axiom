@@ -10,6 +10,7 @@ import UIKit
 
 class CatalogViewController: UIViewController {
     
+    private let searchController = UISearchController(searchResultsController: nil)
     private lazy var catalogcollectionView = createCollectionView()
     private lazy var brandheaderView = BrandView()
     
@@ -21,6 +22,10 @@ class CatalogViewController: UIViewController {
         didSet {
             catalogcollectionView.reloadData()
         }
+    }
+    
+    private var filteredDatasource: [Mobile] {
+        getFilteredDatasource()
     }
     
     override func viewDidLoad() {
@@ -35,6 +40,9 @@ class CatalogViewController: UIViewController {
 private extension CatalogViewController {
     
     func configureView() {
+        
+        title = "My Store"
+        
         view.backgroundColor = .white
         view.addSubview(brandheaderView)
         brandheaderView.fill(leading: view.leadingAnchor, trailing: view.trailingAnchor, top: view.safeTop)
@@ -44,6 +52,15 @@ private extension CatalogViewController {
         brandheaderView.tapActionClosure = { [weak self] item in
             self?.datasource = self?.fullDataSource[item] ?? []
         }
+        configureSearchController()
+    }
+        
+    func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     func refresh(products: [String: [Mobile]]) {
@@ -95,12 +112,43 @@ private extension CatalogViewController {
 extension CatalogViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count
+        return filteredDatasource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CatalogCollectionViewCell.dequeueReusableCell(in: collectionView, indexPath: indexPath)
-        cell.mobile = datasource[indexPath.item]
+        cell.mobile = filteredDatasource[indexPath.item]
         return cell
+    }
+}
+
+extension CatalogViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        catalogcollectionView.reloadData()
+    }
+}
+
+private extension CatalogViewController {
+    
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var lowerCaseText: String {
+        searchController.searchBar.text?.lowercased() ?? ""
+    }
+    
+    func getFilteredDatasource() -> [Mobile] {
+        
+        guard !isSearchBarEmpty else { return datasource }
+        
+        return datasource.filter {
+            $0.brand.lowercased().contains(lowerCaseText) || $0.model?.lowercased().contains(lowerCaseText) == true || $0.price.contains(lowerCaseText)
+        }
     }
 }
