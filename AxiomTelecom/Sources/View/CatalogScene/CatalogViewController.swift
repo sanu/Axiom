@@ -41,6 +41,8 @@ private extension CatalogViewController {
     
     func configureView() {
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.orange]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         title = "My Store"
         
         view.backgroundColor = .white

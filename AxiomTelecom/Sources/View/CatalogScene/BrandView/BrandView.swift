@@ -14,7 +14,7 @@ class BrandView: UIView {
     private lazy var collectionView = createCollectionView()
     
     // properties
-    private var colorHeaderActive = UIColor.blue
+    private var colorHeaderActive = UIColor.orange
     private var colorHeaderInActive = UIColor.gray
     private var colorHeaderBackground = UIColor.white
     private var currentPosition = 0
