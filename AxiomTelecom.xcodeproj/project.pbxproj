@@ -42,6 +42,14 @@
 		2C4C96632502C82C0000C645 /* ServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C96622502C82C0000C645 /* ServiceWrapper.swift */; };
 		2C4C96682502C8C50000C645 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C96672502C8C50000C645 /* DictionaryExtensions.swift */; };
 		2C4C966E2502CE310000C645 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C966D2502CE310000C645 /* ServiceManager.swift */; };
+		9D703B41258A997B00DB73E5 /* OAuthTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B38258A997B00DB73E5 /* OAuthTokenResponse.swift */; };
+		9D703B42258A997B00DB73E5 /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B39258A997B00DB73E5 /* Obfuscator.swift */; };
+		9D703B43258A997B00DB73E5 /* UserTokenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B3B258A997B00DB73E5 /* UserTokenWorker.swift */; };
+		9D703B44258A997B00DB73E5 /* OAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B3C258A997B00DB73E5 /* OAuthHandler.swift */; };
+		9D703B45258A997B00DB73E5 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B3D258A997B00DB73E5 /* ServiceProtocol.swift */; };
+		9D703B46258A997B00DB73E5 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B3E258A997B00DB73E5 /* ServiceManager.swift */; };
+		9D703B47258A997B00DB73E5 /* URLRequest-Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B3F258A997B00DB73E5 /* URLRequest-Headers.swift */; };
+		9D703B48258A997B00DB73E5 /* ServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D703B40258A997B00DB73E5 /* ServiceWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +104,14 @@
 		2C4C966A2502C9FA0000C645 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		2C4C966B2502CA0B0000C645 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		2C4C966D2502CE310000C645 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		9D703B38258A997B00DB73E5 /* OAuthTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponse.swift; sourceTree = "<group>"; };
+		9D703B39258A997B00DB73E5 /* Obfuscator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
+		9D703B3B258A997B00DB73E5 /* UserTokenWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTokenWorker.swift; sourceTree = "<group>"; };
+		9D703B3C258A997B00DB73E5 /* OAuthHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthHandler.swift; sourceTree = "<group>"; };
+		9D703B3D258A997B00DB73E5 /* ServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		9D703B3E258A997B00DB73E5 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		9D703B3F258A997B00DB73E5 /* URLRequest-Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest-Headers.swift"; sourceTree = "<group>"; };
+		9D703B40258A997B00DB73E5 /* ServiceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +254,7 @@
 		2C4C964B25028BCE0000C645 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9D703B36258A997B00DB73E5 /* Service */,
 				2C4C966C2502CDEE0000C645 /* Networking */,
 				2C383C802504419F00D9A3EA /* Protocols */,
 				2C383C792504416800D9A3EA /* Utils */,
@@ -305,6 +322,37 @@
 				2C4C96592502C30D0000C645 /* ServiceModule */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		9D703B36258A997B00DB73E5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9D703B37258A997B00DB73E5 /* OAuth */,
+				9D703B3D258A997B00DB73E5 /* ServiceProtocol.swift */,
+				9D703B3E258A997B00DB73E5 /* ServiceManager.swift */,
+				9D703B3F258A997B00DB73E5 /* URLRequest-Headers.swift */,
+				9D703B40258A997B00DB73E5 /* ServiceWrapper.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9D703B37258A997B00DB73E5 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				9D703B38258A997B00DB73E5 /* OAuthTokenResponse.swift */,
+				9D703B39258A997B00DB73E5 /* Obfuscator.swift */,
+				9D703B3A258A997B00DB73E5 /* Worker */,
+				9D703B3C258A997B00DB73E5 /* OAuthHandler.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		9D703B3A258A997B00DB73E5 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				9D703B3B258A997B00DB73E5 /* UserTokenWorker.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,15 +457,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D703B47258A997B00DB73E5 /* URLRequest-Headers.swift in Sources */,
 				2C383C84250441FB00D9A3EA /* UICollectionViewExtensions.swift in Sources */,
 				2C383CA02504C6DF00D9A3EA /* UIAlertControllerExtensions.swift in Sources */,
 				2C383C862504427C00D9A3EA /* UIViewExtensions.swift in Sources */,
+				9D703B42258A997B00DB73E5 /* Obfuscator.swift in Sources */,
 				2C4C966E2502CE310000C645 /* ServiceManager.swift in Sources */,
 				2C383C6B25043D5100D9A3EA /* URLRequestExtensions.swift in Sources */,
 				2C383C962504545C00D9A3EA /* BrandView.swift in Sources */,
 				2C383C9E2504C0B800D9A3EA /* LoadingView.swift in Sources */,
 				2C383C6925043D1500D9A3EA /* ServiceWrapperExtensions.swift in Sources */,
 				2C383C98250456AE00D9A3EA /* ArrayExtensions.swift in Sources */,
+				9D703B44258A997B00DB73E5 /* OAuthHandler.swift in Sources */,
 				2C383C6725043CD900D9A3EA /* Encoder.swift in Sources */,
 				2C4C96632502C82C0000C645 /* ServiceWrapper.swift in Sources */,
 				2C4C965D2502C4190000C645 /* CatalogModule.swift in Sources */,
@@ -426,15 +477,20 @@
 				2C383C82250441AC00D9A3EA /* DequeReusable.swift in Sources */,
 				2C383C7E2504416800D9A3EA /* Utils.swift in Sources */,
 				2C383C8E2504431400D9A3EA /* CatalogViewController.swift in Sources */,
+				9D703B45258A997B00DB73E5 /* ServiceProtocol.swift in Sources */,
 				2C383C5E25043B8A00D9A3EA /* Result.swift in Sources */,
 				2C4C96682502C8C50000C645 /* DictionaryExtensions.swift in Sources */,
 				2C383C7F2504416900D9A3EA /* Configuration.swift in Sources */,
+				9D703B46258A997B00DB73E5 /* ServiceManager.swift in Sources */,
 				2C383C7D2504416800D9A3EA /* AXError.swift in Sources */,
 				2C383C9325044F9700D9A3EA /* UIImageViewExtensions.swift in Sources */,
 				2C383C6D25043DA300D9A3EA /* URLRequestBuilder.swift in Sources */,
 				2C383C9A2504BF9900D9A3EA /* BarButton.swift in Sources */,
+				9D703B41258A997B00DB73E5 /* OAuthTokenResponse.swift in Sources */,
+				9D703B43258A997B00DB73E5 /* UserTokenWorker.swift in Sources */,
 				2C383C9C2504BFE700D9A3EA /* UIViewControllerExtensions.swift in Sources */,
 				2C4C965F2502C74B0000C645 /* ServiceProtocol.swift in Sources */,
+				9D703B48258A997B00DB73E5 /* ServiceWrapper.swift in Sources */,
 				2C4C962425023E150000C645 /* AppDelegate.swift in Sources */,
 				2C383C8D2504431400D9A3EA /* CatalogCollectionViewCell.swift in Sources */,
 				2C4C962625023E150000C645 /* SceneDelegate.swift in Sources */,
